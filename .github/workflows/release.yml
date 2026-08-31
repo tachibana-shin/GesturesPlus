@@ -31,13 +31,14 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Set up zipalign
+      - name: Set up Android tools
         run: |
-          ZIPALIGN_PATH=$(find $ANDROID_HOME -name zipalign -type f 2>/dev/null | head -1 | xargs dirname)
-          echo "Found zipalign at: $ZIPALIGN_PATH"
+          TOOLS_PATH=$(find $ANDROID_HOME -name zipalign -type f 2>/dev/null | head -1 | xargs dirname)
+          echo "Found tools at: $TOOLS_PATH"
           mkdir -p /usr/local/lib/android/sdk/build-tools/29.0.3
-          ln -sf "$ZIPALIGN_PATH/zipalign" /usr/local/lib/android/sdk/build-tools/29.0.3/zipalign
-          ls -la /usr/local/lib/android/sdk/build-tools/29.0.3/zipalign
+          ln -sf "$TOOLS_PATH/zipalign" /usr/local/lib/android/sdk/build-tools/29.0.3/zipalign
+          ln -sf "$TOOLS_PATH/apksigner" /usr/local/lib/android/sdk/build-tools/29.0.3/apksigner
+          ls -la /usr/local/lib/android/sdk/build-tools/29.0.3/
 
       - name: Install dependencies
         run: npm install
