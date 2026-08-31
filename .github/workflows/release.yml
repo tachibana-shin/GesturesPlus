@@ -52,7 +52,6 @@ jobs:
         run: ./gradlew assembleRelease bundleRelease
 
       - name: Sign APK
-        if: steps.semantic.outputs.new_release_published == 'true' && secrets.SIGNING_KEY != ''
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: app/build/outputs/apk/release
@@ -62,7 +61,6 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       - name: Sign Bundle
-        if: steps.semantic.outputs.new_release_published == 'true' && secrets.SIGNING_KEY != ''
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: app/build/outputs/bundle/release
