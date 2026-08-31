@@ -34,20 +34,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Release (Dry Run)
-        id: semantic
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          dry_run: true
-
-      - name: Update Gradle Version
-        if: steps.semantic.outputs.new_release_published == 'true'
-        run: |
-          sed -i "s/versionName=.*/versionName=${{ steps.semantic.outputs.new_release_version }}/" gradle.properties
-          sed -i "s/versionCode=.*/versionCode=${{ github.run_number }}/" gradle.properties
-
       - name: Build with Gradle
         run: ./gradlew assembleRelease bundleRelease
 
