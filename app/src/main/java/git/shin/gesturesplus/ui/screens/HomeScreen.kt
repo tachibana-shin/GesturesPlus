@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -26,11 +29,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import git.shin.gesturesplus.R
+import git.shin.gesturesplus.ui.GestureViewModel
 import git.shin.gesturesplus.utils.ServiceUtils
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    viewModel: GestureViewModel = viewModel()
+) {
     val context = LocalContext.current
     var isEnabled by remember { mutableStateOf(ServiceUtils.isAccessibilityServiceEnabled(context)) }
     var isBatteryIgnored by remember {
@@ -40,6 +48,7 @@ fun HomeScreen() {
             )
         )
     }
+    val themeMode by viewModel.themeMode.collectAsStateWithLifecycle()
 
     // Kiểm tra lại trạng thái khi quay lại app
     LaunchedEffect(Unit) {
@@ -139,6 +148,41 @@ fun HomeScreen() {
                             R.string.btn_ignore_optimizations
                         )
                     )
+                }
+            }
+        }
+
+        // Card Theme Selection
+        Card(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    text = stringResource(R.string.theme_title),
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    val themes = listOf(
+                        0 to R.string.theme_auto,
+                        1 to R.string.theme_light,
+                        2 to R.string.theme_dark
+                    )
+                    themes.forEach { (mode, labelRes) ->
+                        OutlinedButton(
+                            onClick = { viewModel.setThemeMode(mode) },
+                            modifier = Modifier.weight(1f),
+                            colors = if (themeMode == mode) ButtonDefaults.outlinedButtonColors(
+                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                            ) else ButtonDefaults.outlinedButtonColors()
+                        ) {
+                            Text(stringResource(labelRes), style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
                 }
             }
         }

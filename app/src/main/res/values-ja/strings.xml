@@ -28,6 +28,12 @@
     <string name="instruction_2">2. 安定性のために電池の最適化を無視します。</string>
     <string name="instruction_3">3. 「Gestures」タブでジェスチャーを割り当てます。</string>
 
+    <!-- Theme Selection -->
+    <string name="theme_title">表示テーマ</string>
+    <string name="theme_auto">システムデフォルト</string>
+    <string name="theme_light">ライトモード</string>
+    <string name="theme_dark">ダークモード</string>
+
     <!-- Mapping & Exclusion -->
     <string name="gesture_mapping_title">ジェスチャー設定</string>
     <string name="exclusion_list_title">除外リスト</string>

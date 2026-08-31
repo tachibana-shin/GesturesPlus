@@ -28,6 +28,12 @@
     <string name="instruction_2">2. 忽略电池优化以确保稳定性。</string>
     <string name="instruction_3">3. 在“Gestures”选项卡中映射手势。</string>
 
+    <!-- Theme Selection -->
+    <string name="theme_title">显示主题</string>
+    <string name="theme_auto">系统默认</string>
+    <string name="theme_light">浅色模式</string>
+    <string name="theme_dark">深色模式</string>
+
     <!-- Mapping & Exclusion -->
     <string name="gesture_mapping_title">手势映射</string>
     <string name="exclusion_list_title">排除列表</string>

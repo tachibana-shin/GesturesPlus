@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -16,8 +17,20 @@ class PreferenceManager(private val context: Context) {
 
     companion object {
         private val EXCLUSION_LIST = stringSetPreferencesKey("exclusion_list")
+        private val THEME_MODE = intPreferencesKey("theme_mode") // 0: Auto, 1: Light, 2: Dark
 
         fun getGestureKey(trigger: GestureTrigger) = stringPreferencesKey("gesture_${trigger.name}")
+    }
+
+    val themeModeFlow: Flow<Int> = context.dataStore.data
+        .map { preferences ->
+            preferences[THEME_MODE] ?: 0
+        }
+
+    suspend fun setThemeMode(mode: Int) {
+        context.dataStore.edit { preferences ->
+            preferences[THEME_MODE] = mode
+        }
     }
 
     val exclusionListFlow: Flow<Set<String>> = context.dataStore.data

@@ -21,6 +21,19 @@ class GestureViewModel(application: Application) : AndroidViewModel(application)
             initialValue = GestureTrigger.entries.associateWith { GestureAction.NONE }
         )
 
+    val themeMode: StateFlow<Int> = preferenceManager.themeModeFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = 0
+        )
+
+    fun setThemeMode(mode: Int) {
+        viewModelScope.launch {
+            preferenceManager.setThemeMode(mode)
+        }
+    }
+
     fun setGestureAction(trigger: GestureTrigger, action: GestureAction) {
         viewModelScope.launch {
             preferenceManager.setGestureAction(trigger, action)

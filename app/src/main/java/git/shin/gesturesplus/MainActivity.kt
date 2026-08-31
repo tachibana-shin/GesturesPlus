@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,16 +30,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            GesturesTheme {
-                GesturesApp()
+            val gestureViewModel: GestureViewModel = viewModel()
+            val themeMode by gestureViewModel.themeMode.collectAsState()
+            
+            val darkTheme = when (themeMode) {
+                1 -> false
+                2 -> true
+                else -> isSystemInDarkTheme()
+            }
+
+            GesturesTheme(darkTheme = darkTheme) {
+                GesturesApp(gestureViewModel)
             }
         }
     }
 }
 
 @Composable
-fun GesturesApp() {
-    val gestureViewModel: GestureViewModel = viewModel()
+fun GesturesApp(gestureViewModel: GestureViewModel) {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
 
     NavigationSuiteScaffold(
@@ -58,7 +68,7 @@ fun GesturesApp() {
         }
     ) {
         when (currentDestination) {
-            AppDestinations.HOME -> HomeScreen()
+            AppDestinations.HOME -> HomeScreen(viewModel = gestureViewModel)
             AppDestinations.GESTURES -> GestureMappingScreen(viewModel = gestureViewModel)
             AppDestinations.EXCLUSION -> ExclusionListScreen()
         }

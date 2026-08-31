@@ -28,6 +28,12 @@
     <string name="instruction_2">2. Bỏ qua tối ưu hóa pin để đảm bảo ổn định.</string>
     <string name="instruction_3">3. Cấu hình cử chỉ trong tab \'Gestures\'.</string>
 
+    <!-- Theme Selection -->
+    <string name="theme_title">Giao diện hiển thị</string>
+    <string name="theme_auto">Theo hệ thống</string>
+    <string name="theme_light">Chế độ sáng</string>
+    <string name="theme_dark">Chế độ tối</string>
+
     <!-- Mapping & Exclusion -->
     <string name="gesture_mapping_title">Cấu hình Cử chỉ</string>
     <string name="exclusion_list_title">Danh sách Loại trừ</string>

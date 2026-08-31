@@ -28,6 +28,12 @@
     <string name="instruction_2">2. Ignore battery optimizations for stability.</string>
     <string name="instruction_3">3. Map gestures in the \'Gestures\' tab.</string>
 
+    <!-- Theme Selection -->
+    <string name="theme_title">Display Theme</string>
+    <string name="theme_auto">System Default</string>
+    <string name="theme_light">Light Mode</string>
+    <string name="theme_dark">Dark Mode</string>
+
     <!-- Mapping & Exclusion -->
     <string name="gesture_mapping_title">Gesture Mapping</string>
     <string name="exclusion_list_title">Exclusion List</string>
