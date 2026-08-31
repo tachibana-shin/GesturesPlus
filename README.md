@@ -1,6 +1,6 @@
 # Gestures+ for Sony Xperia
 
-[![Release](https://github.com/shin/GesturesPlus/actions/workflows/release.yml/badge.svg)](https://github.com/shin/GesturesPlus/actions/workflows/release.yml)
+[![Release](https://github.com/tachibana-shin/GesturesPlus/actions/workflows/release.yml/badge.svg)](https://github.com/tachibana-shin/GesturesPlus/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Gestures+** is a lightweight, privacy-focused Android application designed specifically to enhance the Sony Xperia experience with smart multi-finger gestures and quick system actions.
@@ -38,7 +38,7 @@ A rich set of actions ready to be assigned:
 
 ## 🚀 Installation & Setup
 
-1.  Download the latest APK from the [Releases](https://github.com/shin/GesturesPlus/releases) page.
+1.  Download the latest APK from the [Releases](https://github.com/tachibana-shin/GesturesPlus/releases) page.
 2.  Open the app and tap **"Enable Now"** to activate the **Accessibility Service**. This is the only permission required for core functionality.
 3.  Tap **"Ignore Optimizations"** to ensure the service stays active in the background.
 4.  Navigate to the **Gestures** tab to start mapping your favorite actions!

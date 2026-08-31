@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Gesture & Quick Actions for Sony Xperia",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shin/GesturesPlus.git"
-  },
   "devDependencies": {
     "semantic-release": "^24.0.0",
     "@semantic-release/commit-analyzer": "^13.0.0",
