@@ -1,14 +1,49 @@
 package git.shin.gesturesplus.ui.screens
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.*
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.VolumeDown
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.DoNotDisturb
+import androidx.compose.material.icons.filled.DoNotDisturbOn
+import androidx.compose.material.icons.filled.FlashlightOn
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Layers
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.PowerSettingsNew
+import androidx.compose.material.icons.filled.Screenshot
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.material.icons.filled.VerticalSplit
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -27,7 +62,7 @@ fun GestureMappingScreen(
     viewModel: GestureViewModel = viewModel()
 ) {
     val gestures by viewModel.gestures.collectAsStateWithLifecycle()
-    
+
     val triggers = GestureTrigger.entries
     var selectedTrigger by remember { mutableStateOf<GestureTrigger?>(null) }
 
@@ -43,10 +78,17 @@ fun GestureMappingScreen(
         ) {
             items(triggers) { trigger ->
                 val currentAction = gestures[trigger] ?: GestureAction.NONE
-                
+
                 ListItem(
                     headlineContent = { Text(stringResource(trigger.labelRes)) },
-                    supportingContent = { Text(stringResource(R.string.label_action, stringResource(currentAction.labelRes))) },
+                    supportingContent = {
+                        Text(
+                            stringResource(
+                                R.string.label_action,
+                                stringResource(currentAction.labelRes)
+                            )
+                        )
+                    },
                     leadingContent = {
                         Icon(
                             imageVector = getIconForAction(currentAction),
@@ -71,7 +113,14 @@ fun GestureMappingScreen(
     if (selectedTrigger != null) {
         AlertDialog(
             onDismissRequest = { selectedTrigger = null },
-            title = { Text(stringResource(R.string.select_action_title, stringResource(selectedTrigger!!.labelRes))) },
+            title = {
+                Text(
+                    stringResource(
+                        R.string.select_action_title,
+                        stringResource(selectedTrigger!!.labelRes)
+                    )
+                )
+            },
             text = {
                 LazyColumn(
                     modifier = Modifier
@@ -81,11 +130,11 @@ fun GestureMappingScreen(
                 ) {
                     items(GestureAction.entries) { action ->
                         ListItem(
-                            headlineContent = { 
+                            headlineContent = {
                                 Text(
                                     text = stringResource(action.labelRes),
                                     style = MaterialTheme.typography.bodyLarge
-                                ) 
+                                )
                             },
                             leadingContent = {
                                 Icon(

@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.glance.*
+import androidx.glance.GlanceId
+import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
 import androidx.glance.action.clickable
@@ -13,7 +16,13 @@ import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.provideContent
-import androidx.glance.layout.*
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Row
+import androidx.glance.layout.Spacer
+import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.padding
+import androidx.glance.layout.size
+import androidx.glance.layout.width
 import git.shin.gesturesplus.data.GestureAction
 import git.shin.gesturesplus.service.GestureAccessibilityService
 
@@ -48,9 +57,11 @@ class ToolbarWidget : GlanceAppWidget() {
             contentDescription = stringResource(action.labelRes),
             modifier = GlanceModifier
                 .size(40.dp)
-                .clickable(actionRunCallback<ToolbarActionCallback>(
-                    actionParametersOf(ActionKey to action.name)
-                ))
+                .clickable(
+                    actionRunCallback<ToolbarActionCallback>(
+                        actionParametersOf(ActionKey to action.name)
+                    )
+                )
         )
     }
 

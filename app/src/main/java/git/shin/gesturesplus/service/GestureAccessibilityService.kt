@@ -23,7 +23,7 @@ class GestureAccessibilityService : AccessibilityService() {
     private lateinit var windowManager: WindowManager
     private var currentPackage: String? = null
     private var exclusionList = setOf<String>()
-    
+
     private var leftOverlay: View? = null
     private var rightOverlay: View? = null
     private var bottomOverlay: View? = null
@@ -33,14 +33,14 @@ class GestureAccessibilityService : AccessibilityService() {
         super.onServiceConnected()
         preferenceManager = PreferenceManager(this)
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
-        
+
         serviceScope.launch {
             preferenceManager.exclusionListFlow.collect {
                 exclusionList = it
                 updateOverlayState()
             }
         }
-        
+
         val info = AccessibilityServiceInfo().apply {
             eventTypes = AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
             feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC
@@ -68,15 +68,59 @@ class GestureAccessibilityService : AccessibilityService() {
 
     private fun addOverlays() {
         if (leftOverlay == null) {
-            leftOverlay = createOverlayView(Gravity.START or Gravity.CENTER_VERTICAL, 40, WindowManager.LayoutParams.MATCH_PARENT)
-            rightOverlay = createOverlayView(Gravity.END or Gravity.CENTER_VERTICAL, 40, WindowManager.LayoutParams.MATCH_PARENT)
-            bottomOverlay = createOverlayView(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, WindowManager.LayoutParams.MATCH_PARENT, 40)
-            topOverlay = createOverlayView(Gravity.TOP or Gravity.CENTER_HORIZONTAL, WindowManager.LayoutParams.MATCH_PARENT, 40)
-            
-            windowManager.addView(leftOverlay, getLayoutParams(Gravity.START or Gravity.CENTER_VERTICAL, 40, WindowManager.LayoutParams.MATCH_PARENT))
-            windowManager.addView(rightOverlay, getLayoutParams(Gravity.END or Gravity.CENTER_VERTICAL, 40, WindowManager.LayoutParams.MATCH_PARENT))
-            windowManager.addView(bottomOverlay, getLayoutParams(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, WindowManager.LayoutParams.MATCH_PARENT, 40))
-            windowManager.addView(topOverlay, getLayoutParams(Gravity.TOP or Gravity.CENTER_HORIZONTAL, WindowManager.LayoutParams.MATCH_PARENT, 40))
+            leftOverlay = createOverlayView(
+                Gravity.START or Gravity.CENTER_VERTICAL,
+                40,
+                WindowManager.LayoutParams.MATCH_PARENT
+            )
+            rightOverlay = createOverlayView(
+                Gravity.END or Gravity.CENTER_VERTICAL,
+                40,
+                WindowManager.LayoutParams.MATCH_PARENT
+            )
+            bottomOverlay = createOverlayView(
+                Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                40
+            )
+            topOverlay = createOverlayView(
+                Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                40
+            )
+
+            windowManager.addView(
+                leftOverlay,
+                getLayoutParams(
+                    Gravity.START or Gravity.CENTER_VERTICAL,
+                    40,
+                    WindowManager.LayoutParams.MATCH_PARENT
+                )
+            )
+            windowManager.addView(
+                rightOverlay,
+                getLayoutParams(
+                    Gravity.END or Gravity.CENTER_VERTICAL,
+                    40,
+                    WindowManager.LayoutParams.MATCH_PARENT
+                )
+            )
+            windowManager.addView(
+                bottomOverlay,
+                getLayoutParams(
+                    Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    40
+                )
+            )
+            windowManager.addView(
+                topOverlay,
+                getLayoutParams(
+                    Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    40
+                )
+            )
         }
     }
 
@@ -85,7 +129,7 @@ class GestureAccessibilityService : AccessibilityService() {
         rightOverlay?.let { windowManager.removeView(it) }
         bottomOverlay?.let { windowManager.removeView(it) }
         topOverlay?.let { windowManager.removeView(it) }
-        
+
         leftOverlay = null
         rightOverlay = null
         bottomOverlay = null
@@ -102,13 +146,13 @@ class GestureAccessibilityService : AccessibilityService() {
         } else {
             WindowManager.LayoutParams.TYPE_PHONE
         }
-        
+
         return WindowManager.LayoutParams(
             width, height,
             type,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or 
-            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
-            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT
         ).apply {
             this.gravity = gravity
@@ -127,11 +171,13 @@ class GestureAccessibilityService : AccessibilityService() {
                     performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
                 }
             }
+
             GestureAction.LOCK_SCREEN -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)
                 }
             }
+
             GestureAction.NOTIFICATIONS -> performGlobalAction(GLOBAL_ACTION_NOTIFICATIONS)
             GestureAction.QUICK_SETTINGS -> performGlobalAction(GLOBAL_ACTION_QUICK_SETTINGS)
             GestureAction.POWER_MENU -> {
@@ -139,6 +185,7 @@ class GestureAccessibilityService : AccessibilityService() {
                     performGlobalAction(GLOBAL_ACTION_POWER_DIALOG)
                 }
             }
+
             GestureAction.SPLIT_SCREEN -> performGlobalAction(GLOBAL_ACTION_TOGGLE_SPLIT_SCREEN)
             GestureAction.FLASHLIGHT -> toggleFlashlight()
             GestureAction.DND -> toggleDND()
@@ -154,12 +201,15 @@ class GestureAccessibilityService : AccessibilityService() {
                 }
                 startActivity(intent)
             }
+
             GestureAction.LAUNCH_CAMERA -> {
-                val intent = Intent(android.provider.MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
+                val intent =
+                    Intent(android.provider.MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
                 startActivity(intent)
             }
+
             else -> {}
         }
     }
@@ -167,7 +217,8 @@ class GestureAccessibilityService : AccessibilityService() {
     private var isFlashlightOn = false
 
     private fun toggleFlashlight() {
-        val cameraManager = getSystemService(CAMERA_SERVICE) as android.hardware.camera2.CameraManager
+        val cameraManager =
+            getSystemService(CAMERA_SERVICE) as android.hardware.camera2.CameraManager
         try {
             val cameraId = cameraManager.cameraIdList[0]
             isFlashlightOn = !isFlashlightOn
@@ -178,17 +229,20 @@ class GestureAccessibilityService : AccessibilityService() {
     }
 
     private fun toggleDND() {
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val notificationManager =
+            getSystemService(NOTIFICATION_SERVICE) as android.app.NotificationManager
         if (notificationManager.isNotificationPolicyAccessGranted) {
             val currentMode = notificationManager.currentInterruptionFilter
-            val newMode = if (currentMode == android.app.NotificationManager.INTERRUPTION_FILTER_NONE) 
-                android.app.NotificationManager.INTERRUPTION_FILTER_ALL 
+            val newMode =
+                if (currentMode == android.app.NotificationManager.INTERRUPTION_FILTER_NONE)
+                    android.app.NotificationManager.INTERRUPTION_FILTER_ALL
                 else android.app.NotificationManager.INTERRUPTION_FILTER_NONE
             notificationManager.setInterruptionFilter(newMode)
         } else {
-            val intent = Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            }
+            val intent =
+                Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
             startActivity(intent)
         }
     }
@@ -212,7 +266,7 @@ class GestureAccessibilityService : AccessibilityService() {
 
     companion object {
         private var weakInstance: java.lang.ref.WeakReference<GestureAccessibilityService>? = null
-        
+
         val instance: GestureAccessibilityService?
             get() = weakInstance?.get()
     }

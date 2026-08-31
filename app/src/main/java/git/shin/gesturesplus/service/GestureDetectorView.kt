@@ -23,14 +23,14 @@ class GestureDetectorView(
 
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scope = CoroutineScope(Dispatchers.Main + Job())
-    
+
     private var startX = 0f
     private var startY = 0f
     private var isGestureDetected = false
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val pointerCount = event.pointerCount
-        
+
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
                 if (pointerCount >= 2) {
@@ -39,26 +39,28 @@ class GestureDetectorView(
                     isGestureDetected = false
                 }
             }
+
             MotionEvent.ACTION_MOVE -> {
                 if (!isGestureDetected && pointerCount >= 2) {
                     val deltaX = event.getX(0) - startX
                     val deltaY = event.getY(0) - startY
-                    
+
                     if (abs(deltaX) > touchSlop * 3 || abs(deltaY) > touchSlop * 3) {
                         detectGesture(pointerCount, deltaX, deltaY)
                         isGestureDetected = true
                     }
                 }
             }
+
             MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> {
                 isGestureDetected = false
             }
         }
-        
+
         // Trả về false để touch event có thể đi tiếp? 
         // Không, nếu view này ở trên thì nó sẽ nuốt chửng touch.
         // Đây là vấn đề lớn nhất nếu không dùng SYSTEM_ALERT_WINDOW hoặc overlay mỏng.
-        return true 
+        return true
     }
 
     private fun detectGesture(pointerCount: Int, deltaX: Float, deltaY: Float) {
@@ -72,6 +74,7 @@ class GestureDetectorView(
                     else GestureTrigger.TWO_FINGER_EDGE_RIGHT
                 }
             }
+
             3 -> {
                 if (abs(deltaY) > abs(deltaX)) {
                     if (deltaY > 0) GestureTrigger.THREE_FINGER_SWIPE_DOWN
@@ -81,6 +84,7 @@ class GestureDetectorView(
                     else GestureTrigger.THREE_FINGER_SWIPE_LEFT
                 }
             }
+
             4 -> GestureTrigger.FOUR_FINGER_SWIPE
             else -> null
         }

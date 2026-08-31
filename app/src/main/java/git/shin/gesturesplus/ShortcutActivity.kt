@@ -8,7 +8,7 @@ import git.shin.gesturesplus.service.GestureAccessibilityService
 class ShortcutActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         val actionName = intent.getStringExtra("action")
         if (actionName != null) {
             try {
@@ -18,7 +18,7 @@ class ShortcutActivity : Activity() {
                 // Ignore
             }
         }
-        
+
         finish()
     }
 }

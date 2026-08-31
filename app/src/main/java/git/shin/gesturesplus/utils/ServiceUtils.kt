@@ -1,18 +1,26 @@
 package git.shin.gesturesplus.utils
 
 import android.content.Context
+import android.os.PowerManager
 import android.provider.Settings
 import android.text.TextUtils
-import android.os.PowerManager
 import git.shin.gesturesplus.service.GestureAccessibilityService
 
 object ServiceUtils {
     fun isAccessibilityServiceEnabled(context: Context): Boolean {
-        val service = context.packageName + "/" + GestureAccessibilityService::class.java.canonicalName
-        val accessibilityEnabled = Settings.Secure.getInt(context.contentResolver, Settings.Secure.ACCESSIBILITY_ENABLED, 0)
-        
+        val service =
+            context.packageName + "/" + GestureAccessibilityService::class.java.canonicalName
+        val accessibilityEnabled = Settings.Secure.getInt(
+            context.contentResolver,
+            Settings.Secure.ACCESSIBILITY_ENABLED,
+            0
+        )
+
         if (accessibilityEnabled == 1) {
-            val settingValue = Settings.Secure.getString(context.contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
+            val settingValue = Settings.Secure.getString(
+                context.contentResolver,
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+            )
             if (settingValue != null) {
                 val splitter = TextUtils.SimpleStringSplitter(':')
                 splitter.setString(settingValue)
