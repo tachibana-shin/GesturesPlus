@@ -34,8 +34,10 @@ jobs:
       - name: Set up zipalign
         run: |
           ZIPALIGN_PATH=$(find $ANDROID_HOME -name zipalign -type f 2>/dev/null | head -1 | xargs dirname)
-          echo "PATH=$PATH:$ZIPALIGN_PATH" >> $GITHUB_PATH
           echo "Found zipalign at: $ZIPALIGN_PATH"
+          mkdir -p /usr/local/lib/android/sdk/build-tools/29.0.3
+          ln -sf "$ZIPALIGN_PATH/zipalign" /usr/local/lib/android/sdk/build-tools/29.0.3/zipalign
+          ls -la /usr/local/lib/android/sdk/build-tools/29.0.3/zipalign
 
       - name: Install dependencies
         run: npm install
