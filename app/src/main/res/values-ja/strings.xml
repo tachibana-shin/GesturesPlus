@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Gestures+</string>
+    <string name="accessibility_service_description">Gestures+ は、このサービスを使用してマルチフィンガージェスチャーをリッスンし、スクリーンショットや画面のロックなどのシステムアクションを実行します。データは収集も共有もされません。</string>
+    <string name="ic_home_label">ホーム</string>
+    <string name="ic_favorite_label">お気に入り</string>
+    <string name="ic_account_label">プロフィール</string>
+
+    <string name="shortcut_lock_short">画面をロック</string>
+    <string name="shortcut_lock_long">すぐに画面をロックする</string>
+    <string name="shortcut_screenshot_short">スクリーンショット</string>
+    <string name="shortcut_screenshot_long">今すぐスクリーンショットを撮る</string>
+
+    <!-- Home Screen -->
+    <string name="accessibility_active">アクセシビリティ: 有効</string>
+    <string name="accessibility_inactive">アクセシビリティ: 無効</string>
+    <string name="accessibility_active_desc">ジェスチャーがキャプチャされています。</string>
+    <string name="accessibility_inactive_desc">アクションを実行するにはサービスが必要です。</string>
+    <string name="btn_open_settings">設定を開く</string>
+    <string name="btn_enable_now">今すぐ有効にする</string>
+    <string name="battery_optimized">電池: 最適化済み</string>
+    <string name="battery_unoptimized">電池: 未最適化</string>
+    <string name="battery_optimized_desc">バックグラウンド実行が許可されています。</string>
+    <string name="battery_unoptimized_desc">サービスの停止を防ぐために、最適化を無視することをお勧めします。</string>
+    <string name="btn_already_ignored">無視済み</string>
+    <string name="btn_ignore_optimizations">最適化を無視する</string>
+    <string name="instructions_title">手順:</string>
+    <string name="instruction_1">1. アクセシビリティサービスを有効にします。</string>
+    <string name="instruction_2">2. 安定性のために電池の最適化を無視します。</string>
+    <string name="instruction_3">3. 「Gestures」タブでジェスチャーを割り当てます。</string>
+
+    <!-- Mapping & Exclusion -->
+    <string name="gesture_mapping_title">ジェスチャー設定</string>
+    <string name="exclusion_list_title">除外リスト</string>
+    <string name="select_action_title">%1$s のアクションを選択</string>
+    <string name="label_action">アクション: %1$s</string>
+    <string name="cancel">キャンセル</string>
+
+    <!-- Gesture Triggers -->
+    <string name="trigger_3f_down">3本指で下にスワイプ</string>
+    <string name="trigger_3f_up">3本指で上にスワイプ</string>
+    <string name="trigger_3f_left">3本指で左にスワイプ</string>
+    <string name="trigger_3f_right">3本指で右にスワイプ</string>
+    <string name="trigger_2f_left">2本指で左端</string>
+    <string name="trigger_2f_right">2本指で右端</string>
+    <string name="trigger_2f_bottom">2本指で下端スワイプ</string>
+    <string name="trigger_3f_tap">3本指でタップ</string>
+    <string name="trigger_4f_swipe">4本指でスワイプ（片手モード）</string>
+
+    <!-- Gesture Actions -->
+    <string name="action_none">なし</string>
+    <string name="action_back">戻る</string>
+    <string name="action_home">ホーム</string>
+    <string name="action_recents">最近のアプリ</string>
+    <string name="action_screenshot">スクリーンショット</string>
+    <string name="action_lock">画面をロック</string>
+    <string name="action_notifications">通知</string>
+    <string name="action_quick_settings">クイック設定</string>
+    <string name="action_power_menu">電源メニュー</string>
+    <string name="action_split_screen">画面分割</string>
+    <string name="action_flashlight">懐中電灯</string>
+    <string name="action_dnd">サイレントモード</string>
+    <string name="action_volume_up">音量を上げる</string>
+    <string name="action_volume_down">音量を下げる</string>
+    <string name="action_play_pause">再生/一時停止</string>
+    <string name="action_next">次の曲</string>
+    <string name="action_previous">前の曲</string>
+    <string name="action_search">検索</string>
+    <string name="action_camera">カメラを起動</string>
+</resources>

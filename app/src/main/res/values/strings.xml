@@ -1,3 +1,69 @@
 <resources>
     <string name="app_name">Gestures+</string>
+    <string name="accessibility_service_description">Gestures+ uses this service to listen for multi-finger gestures and perform system actions like screenshots and locking the screen. No data is collected or shared.</string>
+    <string name="ic_home_label">Home</string>
+    <string name="ic_favorite_label">Favorites</string>
+    <string name="ic_account_label">Profile</string>
+
+    <string name="shortcut_lock_short">Lock Screen</string>
+    <string name="shortcut_lock_long">Immediately lock the screen</string>
+    <string name="shortcut_screenshot_short">Screenshot</string>
+    <string name="shortcut_screenshot_long">Take a screenshot now</string>
+
+    <!-- Home Screen -->
+    <string name="accessibility_active">Accessibility: Active</string>
+    <string name="accessibility_inactive">Accessibility: Inactive</string>
+    <string name="accessibility_active_desc">Gestures are being captured.</string>
+    <string name="accessibility_inactive_desc">Service is required to perform actions.</string>
+    <string name="btn_open_settings">Open Settings</string>
+    <string name="btn_enable_now">Enable Now</string>
+    <string name="battery_optimized">Battery: Optimized</string>
+    <string name="battery_unoptimized">Battery: Unoptimized</string>
+    <string name="battery_optimized_desc">Background execution is allowed.</string>
+    <string name="battery_unoptimized_desc">Recommended to ignore optimizations to prevent service being killed.</string>
+    <string name="btn_already_ignored">Already Ignored</string>
+    <string name="btn_ignore_optimizations">Ignore Optimizations</string>
+    <string name="instructions_title">Instructions:</string>
+    <string name="instruction_1">1. Enable Accessibility Service.</string>
+    <string name="instruction_2">2. Ignore battery optimizations for stability.</string>
+    <string name="instruction_3">3. Map gestures in the \'Gestures\' tab.</string>
+
+    <!-- Mapping & Exclusion -->
+    <string name="gesture_mapping_title">Gesture Mapping</string>
+    <string name="exclusion_list_title">Exclusion List</string>
+    <string name="select_action_title">Select Action for %1$s</string>
+    <string name="label_action">Action: %1$s</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Gesture Triggers -->
+    <string name="trigger_3f_down">3-Finger Swipe Down</string>
+    <string name="trigger_3f_up">3-Finger Swipe Up</string>
+    <string name="trigger_3f_left">3-Finger Swipe Left</string>
+    <string name="trigger_3f_right">3-Finger Swipe Right</string>
+    <string name="trigger_2f_left">2-Finger Left Edge</string>
+    <string name="trigger_2f_right">2-Finger Right Edge</string>
+    <string name="trigger_2f_bottom">2-Finger Bottom Swipe</string>
+    <string name="trigger_3f_tap">3-Finger Tap</string>
+    <string name="trigger_4f_swipe">4-Finger Swipe (One-handed)</string>
+
+    <!-- Gesture Actions -->
+    <string name="action_none">None</string>
+    <string name="action_back">Back</string>
+    <string name="action_home">Home</string>
+    <string name="action_recents">Recent Apps</string>
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_lock">Lock Screen</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_quick_settings">Quick Settings</string>
+    <string name="action_power_menu">Power Menu</string>
+    <string name="action_split_screen">Split Screen</string>
+    <string name="action_flashlight">Flashlight</string>
+    <string name="action_dnd">Do Not Disturb</string>
+    <string name="action_volume_up">Volume Up</string>
+    <string name="action_volume_down">Volume Down</string>
+    <string name="action_play_pause">Play/Pause</string>
+    <string name="action_next">Next Track</string>
+    <string name="action_previous">Previous Track</string>
+    <string name="action_search">Search</string>
+    <string name="action_camera">Launch Camera</string>
 </resources>

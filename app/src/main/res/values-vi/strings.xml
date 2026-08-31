@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Gestures+</string>
+    <string name="accessibility_service_description">Gestures+ sử dụng dịch vụ này để lắng nghe các cử chỉ đa điểm và thực hiện các hành động hệ thống như chụp màn hình và khóa màn hình. Không có dữ liệu nào được thu thập hoặc chia sẻ.</string>
+    <string name="ic_home_label">Trang chủ</string>
+    <string name="ic_favorite_label">Yêu thích</string>
+    <string name="ic_account_label">Hồ sơ</string>
+
+    <string name="shortcut_lock_short">Khóa màn hình</string>
+    <string name="shortcut_lock_long">Khóa màn hình ngay lập tức</string>
+    <string name="shortcut_screenshot_short">Chụp màn hình</string>
+    <string name="shortcut_screenshot_long">Chụp màn hình ngay bây giờ</string>
+
+    <!-- Home Screen -->
+    <string name="accessibility_active">Accessibility: Đang bật</string>
+    <string name="accessibility_inactive">Accessibility: Đang tắt</string>
+    <string name="accessibility_active_desc">Các cử chỉ đang được ghi nhận.</string>
+    <string name="accessibility_inactive_desc">Cần bật dịch vụ để thực hiện các hành động.</string>
+    <string name="btn_open_settings">Mở Cài đặt</string>
+    <string name="btn_enable_now">Bật ngay</string>
+    <string name="battery_optimized">Pin: Đã tối ưu</string>
+    <string name="battery_unoptimized">Pin: Chưa tối ưu</string>
+    <string name="battery_optimized_desc">Cho phép ứng dụng chạy ngầm.</string>
+    <string name="battery_unoptimized_desc">Khuyến nghị bỏ qua tối ưu hóa để tránh dịch vụ bị dừng.</string>
+    <string name="btn_already_ignored">Đã bỏ qua</string>
+    <string name="btn_ignore_optimizations">Bỏ qua tối ưu hóa</string>
+    <string name="instructions_title">Hướng dẫn:</string>
+    <string name="instruction_1">1. Bật dịch vụ Accessibility.</string>
+    <string name="instruction_2">2. Bỏ qua tối ưu hóa pin để đảm bảo ổn định.</string>
+    <string name="instruction_3">3. Cấu hình cử chỉ trong tab \'Gestures\'.</string>
+
+    <!-- Mapping & Exclusion -->
+    <string name="gesture_mapping_title">Cấu hình Cử chỉ</string>
+    <string name="exclusion_list_title">Danh sách Loại trừ</string>
+    <string name="select_action_title">Chọn hành động cho %1$s</string>
+    <string name="label_action">Hành động: %1$s</string>
+    <string name="cancel">Hủy</string>
+
+    <!-- Gesture Triggers -->
+    <string name="trigger_3f_down">Vuốt 3 ngón xuống</string>
+    <string name="trigger_3f_up">Vuốt 3 ngón lên</string>
+    <string name="trigger_3f_left">Vuốt 3 ngón sang trái</string>
+    <string name="trigger_3f_right">Vuốt 3 ngón sang phải</string>
+    <string name="trigger_2f_left">Cạnh trái 2 ngón</string>
+    <string name="trigger_2f_right">Cạnh phải 2 ngón</string>
+    <string name="trigger_2f_bottom">Vuốt cạnh dưới 2 ngón</string>
+    <string name="trigger_3f_tap">Chạm 3 ngón</string>
+    <string name="trigger_4f_swipe">Vuốt 4 ngón (Dùng 1 tay)</string>
+
+    <!-- Gesture Actions -->
+    <string name="action_none">Không có</string>
+    <string name="action_back">Quay lại</string>
+    <string name="action_home">Màn hình chính</string>
+    <string name="action_recents">Ứng dụng gần đây</string>
+    <string name="action_screenshot">Chụp màn hình</string>
+    <string name="action_lock">Khóa màn hình</string>
+    <string name="action_notifications">Thông báo</string>
+    <string name="action_quick_settings">Cài đặt nhanh</string>
+    <string name="action_power_menu">Menu nguồn</string>
+    <string name="action_split_screen">Chia đôi màn hình</string>
+    <string name="action_flashlight">Đèn pin</string>
+    <string name="action_dnd">Không làm phiền</string>
+    <string name="action_volume_up">Tăng âm lượng</string>
+    <string name="action_volume_down">Giảm âm lượng</string>
+    <string name="action_play_pause">Phát/Tạm dừng</string>
+    <string name="action_next">Bài tiếp theo</string>
+    <string name="action_previous">Bài trước đó</string>
+    <string name="action_search">Tìm kiếm</string>
+    <string name="action_camera">Mở Máy ảnh</string>
+</resources>
